@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Task from "./Task";
+import AddEditTaskArea from "../functions/AddEditTaskArea";
 
 const Column = ({ colIndex }) => {
   const colors = [
-    "bg-blue-700",
-    "bg-purple-500",
-    "bg-blue-400",
-    "bg-green-500",
+    "bg-blue-200",
+    "bg-purple-200",
+    "bg-pink-200",
+    "bg-green-200",
   ];
+  const bgColor = ["blue"];
   const dispatch = useDispatch();
+  const [isOpenAddEditTask, setIsOpenAddEditTask] = useState(false);
 
   const display = useSelector((state) => state.dashboard);
   const board = display.find((board) => board.isActive === true);
@@ -23,8 +26,33 @@ const Column = ({ colIndex }) => {
       </p>
 
       {col.tasks.map((task, index) => (
-        <Task key={index} taskIndex={index} colIndex={colIndex} />
+        <Task
+          key={index}
+          taskIndex={index}
+          colIndex={colIndex}
+          color={colors[colIndex]}
+        />
       ))}
+
+      <div
+        className="flex space-x-4 items-center md:space-x-6 cursor-pointer w-[280px]"
+        onClick={() => setIsOpenAddEditTask((state) => !state)}
+      >
+        <button
+          className={`${colors[colIndex]} py-2 px-4 rounded-full text-black text-lg font-semibold  w-[279px]`}
+        >
+          + Add New Task
+        </button>
+      </div>
+      {isOpenAddEditTask && (
+        <AddEditTaskArea
+          type="add"
+          device="mobile"
+          isOpenAddEditTask={isOpenAddEditTask}
+          prevColIndex={colIndex}
+          setIsOpenAddEditTask={setIsOpenAddEditTask}
+        />
+      )}
     </div>
   );
 };

@@ -37,12 +37,12 @@ const Header = ({ boardAreaOpen, setboardAreaOpen }) => {
           </div>
         </div>
 
-        <div
+        {/* <div
           className="flex space-x-4 items-center md:space-x-6 cursor-pointer"
           onClick={() => setIsOpenAddEditTask((state) => !state)}
         >
           <button className="button">+ Add New Task</button>
-        </div>
+        </div> */}
       </header>
       {onDropDown && (
         <DropDown
@@ -53,14 +53,14 @@ const Header = ({ boardAreaOpen, setboardAreaOpen }) => {
       {/* {boardAreaOpen && (
         <AddEditBoardArea setboardAreaOpen={setboardAreaOpen} />
       )} */}
-      {isOpenAddEditTask && (
+      {/* {isOpenAddEditTask && (
         <AddEditTaskArea
           type="add"
           device="mobile"
           isOpenAddEditTask={isOpenAddEditTask}
           setIsOpenAddEditTask={setIsOpenAddEditTask}
         />
-      )}
+      )} */}
     </div>
   );
 };

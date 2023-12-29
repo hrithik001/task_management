@@ -3,12 +3,15 @@ import Column from "./Column";
 
 import { useSelector } from "react-redux";
 import ProjectsList from "../components/ProjectsList";
+// import AddEditTaskArea from "../functions/AddEditTaskArea";
 
 const Content = ({ setboardAreaOpen, boardAreaOpen }) => {
-  const [isSideBar, setSideBar] = useState(false);
+  const [isSideBar, setSideBar] = useState(true);
   const display = useSelector((state) => state.dashboard);
   const board = display.find((bord) => bord.isActive === true);
+  // const isOpenAddEditTask = true;
   const taskColoumns = board.columns;
+
   // console.log(taskColoumns);
 
   const [windowSize, setwindowSize] = useState([

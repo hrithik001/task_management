@@ -9,7 +9,7 @@ function AddEditTaskArea({
   type,
   device,
   taskIndex,
-  prevColIndex = 0,
+  prevColIndex,
   setIsOpenAddEditTask,
 }) {
   const dispatch = useDispatch();
